@@ -1,0 +1,149 @@
+Testing instructions for all the gap test programs in this
+repository.
+
+Read REFERENCES for information about the gap test.
+
+--------
+
+Program by program testing instructions.
+
+Fibonacci random number generator
+
+Run fibogap to apply the gap test to the fibonacci random number
+generator.  There are no parameters.
+
+./fibogap
+
+This program is expected to fail the test.
+
+--------
+
+64 bit LFSR random number generator
+
+Run lfsrgap to apply the gap test to the 64 bit LFSR random
+number generator.  There are no parameters.
+
+./lfsrgap
+
+This program is expected to fail the test.
+
+--------
+
+32 bit RANDU random number generator
+
+Run randu to apply the gap test to the 32 bit
+RANDU random number generator.  There are no parameters.
+
+./rugap
+
+This program is expected to fail the test.
+
+--------
+
+Sine wave random number generator
+
+Run randu to apply the gap test to the sine wave random
+number generator.  There are no parameters.
+
+./sinegap
+
+This program is expected to fail the test.
+
+--------
+
+eegl64 random number generator
+
+Run gaptest to apply the gap test to the eegl64 uniform random
+number generator.  There are no parameters.
+
+./gaptest
+
+This test is expected to pass.
+
+--------
+
+etaus random number generator
+
+Run etausgap to apply the gap test to the etaus uniform
+random number generator.  There are no parameters.
+
+./etausgap
+
+This test is expected to pass.
+
+--------
+
+GNU Scientific Library random number generators
+
+Run tstgsl.sh to apply the gap test to the GNU Scientific
+Library collection of random number generators.
+There is one parameter. the name of the GSL generator.
+
+./tstgsl.sh RNG_name 
+
+Example,
+
+./tstgsl.sh taus2
+
+This example runs the gap test on the GSL taus2 random
+number generator.
+
+To find a list of valid GSL random number generators, enter
+a parameter that produces an error.
+
+./tstgsl.sh ?
+
+This test is expected to pass the test except for three "random32"
+generators.
+
+To run a test of all GSL generators, run runall.sh.
+
+./runall.sh
+
+Read the results of this test by browsing allgsl.out.
+This test reads allgsl.lst as an input file.
+
+--------
+
+Dieharder package random number generators
+
+Run tstdie.sh to apply the gap test to the dieharder collection
+of random number generators.  There is one parameter, the id of
+the dieharder generator.
+
+./tstdie.sh RNG_number
+
+Example,
+
+./tstdie.sh 053
+
+This example runs the gap test on the dieharder taus2 random
+number generator.
+
+To find a list of valid dieharder random number generators,
+enter the following dieharder command.
+
+dieharder -g -l
+
+This test is expected to pass the test except for the uni
+generator.
+
+To run a test of all dieharder generators, run dieall.sh.
+
+./dieall.sh
+
+Read the results of this test by browsing alldie.out.
+This test reads alldie.lst as an input file.
+
+--------
+
+Submit more gap tests.
+
+If you have a random number generator not included in this
+repository, you are welcome to add more gap test programs
+to this repository.
+
+--------
+
+Read REFERFENCES for information about the gap test.
+Read INSTALL for installing this repository.
