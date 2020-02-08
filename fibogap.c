@@ -34,9 +34,8 @@ int main(void)
       } /* out of memory */
    eefmt *ee;
    ee = (eefmt *) eeglinit();
-   fibonum1 = ee->lfsr;
-   eegl(ee);
-   fibonum2 = ee->lfsr;
+   fibonum1 = eegl(ee);
+   fibonum2 = eegl(ee);
    fibonum3 = fibonum1 + fibonum2;
    modulus = 65536.0 * 65536.0;
    p = (char *) rawlist;

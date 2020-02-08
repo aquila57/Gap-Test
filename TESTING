@@ -36,13 +36,13 @@ RANDU random number generator.  There are no parameters.
 
 ./rugap
 
-This program is expected to fail the test.
+This program is expected to pass the test.
 
 --------
 
 Sine wave random number generator
 
-Run randu to apply the gap test to the sine wave random
+Run sinegap to apply the gap test to the sine wave random
 number generator.  There are no parameters.
 
 ./sinegap

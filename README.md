@@ -69,7 +69,7 @@ ranging from zero to one.
 RANDU
 
 The RANDU random number generator illustrates how a weak
-random number generator fails this test.
+random number generator passes this test.
 
 RANDU is a 32 bit generator with a period length of 2^30.
 

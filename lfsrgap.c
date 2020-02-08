@@ -10,6 +10,21 @@
 
 #define DF 128
 
+#define MYLFSROUT (out = (((lfsr >> 4) \
+   ^ (lfsr >> 3) \
+   ^ (lfsr >> 1) \
+   ^ (lfsr >> 0)) & 1))
+
+#define MYLFSRLOWBIT (lowbit = major & 1)
+
+#define MYLFSRROLL (major = lfsr0 = \
+(major >> 1) | (out << 31))
+
+#define MYLFSRCARRY (minor = lfsr = \
+(minor >> 1) | (lowbit << 31))
+
+#define MYLFSR (MYLFSROUT,MYLFSRLOWBIT,MYLFSRROLL,MYLFSRCARRY)
+
 void calcchi(int *freqtbl);
 
 int main(void)
@@ -18,6 +33,12 @@ int main(void)
    int gap;
    int freqtbl[512];
    int kount;
+   unsigned int lfsr0;
+   unsigned int lfsr;
+   unsigned int major;
+   unsigned int minor;
+   int lowbit;
+   int out;
    char *p,*q;
    char *rawlist;
    rawlist = (char *) malloc(RAWSIZE);
@@ -29,6 +50,8 @@ int main(void)
       } /* out of memory */
    eefmt *ee;
    ee = (eefmt *) eeglinit();
+   lfsr0 = major = eegl(ee);
+   lfsr  = minor = eegl(ee);
    p = (char *) rawlist;
    q = (char *) rawlist + RAWSIZE;
    while (p < q) *p++ = 0xff;
@@ -37,8 +60,8 @@ int main(void)
    while (kount--)
       {
       int ch;
-      LFSR;
-      ch = ee->lfsr & 15;
+      MYLFSR;
+      ch = lfsr & 15;
       *p++ = (char) ch;
       } /* gen loop */
    for (i=0;i<512;i++) freqtbl[i] = 0;

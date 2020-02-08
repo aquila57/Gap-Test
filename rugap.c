@@ -32,7 +32,7 @@ int main(void)
       } /* out of memory */
    eefmt *ee;
    ee = (eefmt *) eeglinit();
-   seed = ee->lfsr & 1;
+   seed = ee->lfsr | 1;
    p = (char *) rawlist;
    q = (char *) rawlist + RAWSIZE;
    while (p < q) *p++ = 0xff;
@@ -42,7 +42,7 @@ int main(void)
       {
       int ch;
       RANDU;
-      ch = (seed >> 8) & 15;
+      ch = (seed >> 24) & 15;
       *p++ = (char) ch;
       } /* gen loop */
    for (i=0;i<512;i++) freqtbl[i] = 0;
